@@ -34,10 +34,78 @@ public class Regex {
 //            phoneNumberChecker("(206)4121852");
 //            phoneNumberChecker("     (206)4121852      ");
 
+
+//            nameChecker("nAlIvAyKo, MiChAeL");
+//            nameChecker("nAlIvAyKo, MiChAeL, pavlovich");
+            dateChecker("01-20-1999");
+
             //Matcher matcher = pattern.matcher(parsePatternText);
 
 
         }
+    }
+
+    public static void dateChecker(String parsePatternText) {
+        //String PNRegex0 = "[0]{1}[1]{1}}-([0-2]{1}[0-9]{1})|([3]{1}[0-1]{1})-[0-9]{4}";
+
+        String PNRegex0 = "[0]{1}[1]{1}-([0-2]{1}[0-9]{1})|([3]{1}[0-1]{1})-[0-9]{4}";
+        Pattern pattern0 = Pattern.compile(PNRegex0);
+        Matcher matcher0 = pattern0.matcher(parsePatternText);
+
+        boolean found = false;
+        while (matcher0.find()) {
+            System.out.println("fell into Regex0");
+            System.out.println("found the text "
+                    + matcher0.group() + " starting at index "
+                    + matcher0.start()
+                    + " and ending at index "
+                    + matcher0.end());
+            found = true;
+        }
+        if (!found) {
+            System.out.println("Match not found");
+        } else {
+            System.out.println("Valid phone number");
+        }
+    }
+
+    public static void nameChecker(String parsePatternText) {
+        String PNRegex0 = "[a-zA-Z]+[,]{1}\s[a-zA-Z]+";
+        Pattern pattern0 = Pattern.compile(PNRegex0);
+        Matcher matcher0 = pattern0.matcher(parsePatternText);
+
+        String PNRegex1 = "[a-zA-Z]+[,]{1}\s[a-zA-Z]+,\s[a-zA-Z]+";
+        Pattern pattern1 = Pattern.compile(PNRegex1);
+        Matcher matcher1 = pattern1.matcher(parsePatternText);
+
+        boolean found = false;
+        while (matcher0.find()) {
+            System.out.println("fell into Regex0");
+            System.out.println("found the text "
+                    + matcher0.group() + " starting at index "
+                    + matcher0.start()
+                    + " and ending at index "
+                    + matcher0.end());
+            found = true;
+        }
+        while (matcher1.find()) {
+            System.out.println("fell into Regex1");
+            System.out.println("found the text "
+                    + matcher1.group() + " starting at index "
+                    + matcher1.start()
+                    + " and ending at index "
+                    + matcher1.end());
+            found = true;
+        }
+        if (!found) {
+            System.out.println("Match not found");
+        } else {
+            System.out.println("Valid phone number");
+        }
+    }
+
+    public static void emailChecker(String parsePatternText) {
+
     }
 
     public static void phoneNumberChecker(String parsePatternText) {
