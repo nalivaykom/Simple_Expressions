@@ -2,8 +2,48 @@ A
 123-45-6789
 A
 123456789
+B
+2061238531
+B
+(253) 123 4567
 C
 tcapaul@uw.edu
 C
 thomas.capaul@uw.edu
+D
+nAlIvAyKo, MiChAeL
+D
+nAlIvAyKo, MiChAeL, pavlovich
+E
+12/22/1999
+E
+02-12-1767
+F
+555 willie Stargell Ave
+F
+43752 willis st
+G
+Kent, wa 98032
+G
+Kent, wa 98032
+H
+00:50:24
+H
+23:10 35
+I
+1.00
+I
+6,647,754,221,789,123.99
+J
+https://somthing.gov
+J
+http://www.youtube.com
+K
+aAkSab.dBd4a
+K
+Fj4.3kDkc4?
+L
+attention
+L
+ion
 Q
