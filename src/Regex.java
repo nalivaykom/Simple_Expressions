@@ -138,7 +138,7 @@ public class Regex {
 
     public static void currencyChecker(String parsePatternText) {
         //regex that allows for any length of currency with commas down to the cent
-        String currency0 = "([0-9]|[0-9]{2}|[0-9]{3})([,][0-9]{3})*.[0-9]{2}";
+        String currency0 = "([0-9]|[0-9]{2}|[0-9]{3})([,][0-9]{3})*[.][0-9]{2}";
         Pattern pattern0 = Pattern.compile(currency0);
         Matcher matcher0 = pattern0.matcher(parsePatternText);
 

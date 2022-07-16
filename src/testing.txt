@@ -2,48 +2,120 @@ A
 123-45-6789
 A
 123456789
+A
+123 45 6789
+A
+a23 45 6789
+A
+123
 B
 2061238531
 B
 (253) 123 4567
+B
+253-543-1642
+B
+2567-321-143
+B
+(123-236-9345
 C
 tcapaul@uw.edu
 C
 thomas.capaul@uw.edu
+C
+memo@gmail.com
+C
+guyfieri.com
+C
+guy@fiericom
 D
 nAlIvAyKo, MiChAeL
 D
 nAlIvAyKo, MiChAeL, pavlovich
+D
+Last, First, M
+D
+Last First M
+D
+Last First
 E
 12/22/1999
 E
 02-12-1767
+E
+01-01-2021
+E
+02/30/2000
+E
+11/37/1700
 F
 555 willie Stargell Ave
 F
 43752 willis st
+F
+1 1st boulevard
+F
+east 2nd 1st place ct
+F
+231 south washington village
 G
 Kent, wa 98032
 G
 Kent, wa 98032
+G
+auburn, wa 00321
+G
+seattle wa 98989
+G
+seattle, washington 98989
 H
 00:50:24
 H
 23 10 35
+H
+24:00:35
+H
+12:15 79
+H
+06 02:99
 I
 1.00
 I
 6,647,754,221,789,123.99
+I
+45.999
+I
+65,65.65
+I
+1111,1111.1111
 J
 https://somthing.gov
 J
 http://www.youtube.com
+J
+HTTP://www.google.com
+J
+htp://www.nomandland.gov
+J
+google.me
 K
 aAkSab.dBd4a
 K
 Fj4.3kDkc4?
+K
+aaBccD?Yea1
+K
+12345
+K
+aaBccD?Yea1aalkjhef
 L
 attention
 L
 ion
+L
+scion
+L
+action
+L
+nothing
 Q
