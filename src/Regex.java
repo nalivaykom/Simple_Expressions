@@ -1,11 +1,13 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Regex {
-    public static void main(String[] args) {
-        //while (true) {
-            Scanner input = new Scanner(System.in);
+    public static void main(String[] args) throws FileNotFoundException {
+
 //            System.out.println("press enter to go");
 //            String userInput = input.nextLine();
 //            System.out.print("Enter your regex expression: ");
@@ -37,22 +39,257 @@ public class Regex {
 
 //            nameChecker("nAlIvAyKo, MiChAeL");
 //            nameChecker("nAlIvAyKo, MiChAeL, pavlovich");
-            dateChecker("12/32/1999");
-        System.out.println();
-            dateChecker("12/31/1999");
-        System.out.println();
-            dateChecker("12/29/1999");
-        System.out.println();
-            dateChecker("12-32-1999");
-        System.out.println();
-            dateChecker("12-31-1999");
-        System.out.println();
-            dateChecker("12-29-1999");
+//            dateChecker("12/32/1999");
+//        System.out.println();
+//            dateChecker("12/31/1999");
+//        System.out.println();
+//            dateChecker("12/29/1999");
+//        System.out.println();
+//            dateChecker("12-32-1999");
+//        System.out.println();
+//            dateChecker("12-31-1999");
+//        System.out.println();
+//            dateChecker("12-29-1999");
 
-            //Matcher matcher = pattern.matcher(parsePatternText);
+//        houseAddressChecker("1 5th st");
+//        houseAddressChecker("555 willie Stargell Ave");
+//        houseAddressChecker("430752 willis st");
+
+//        cityStateChecker("Kent, wa 98032");
+//        cityStateChecker("des moines, wa 98054");
+//        cityStateChecker("new york, ny 24534");
+
+//
+//        militaryTimeChecker("00:50:24");
+//        militaryTimeChecker("1930 16");
+//        militaryTimeChecker("2227:59");
+//        militaryTimeChecker("24:00 35");
+
+        //Matcher matcher = pattern.matcher(parsePatternText);
+
+//        currencyChecker("1.00");
+//        currencyChecker("11.25");
+//        currencyChecker("216.67");
+//        currencyChecker("5.05");
+//        currencyChecker("6.99");
+//        currencyChecker("1,123.00");
+//        currencyChecker("11,123.25");
+//        currencyChecker("216,123.67");
+//        currencyChecker("5,123.05");
+//        currencyChecker("6,123.99");
+//        currencyChecker("6,647,754,221,789,123.99");
 
 
-       // }
+//        urlChecker("https://somthing.gov");
+//        urlChecker("http://www.youtube.com");
+//        urlChecker("HTTPS://google.com");
+//        urlChecker("HTTP://www.youtube.weebly.com");
+//        urlChecker("google.com");
+//        urlChecker("www.youtube.com");
+
+
+//        passwordChecker("aAkSab.dBd4a");
+//        oddWordChecker("attention");
+//            oddWordChecker("ion");
+//            oddWordChecker("scion");
+//            oddWordChecker("action");
+
+
+        Scanner input = new Scanner(System.in);
+        System.out.println("would you like to manually test or redirect file? (1 for manual, 2 for file): ");
+        String userChoice = input.nextLine();
+        while (!(Objects.equals(userChoice, "1") || Objects.equals(userChoice, "2"))) {
+            System.out.println("Please choose 1 or 2 (1 for manual, 2 for file): ");
+            userChoice = input.nextLine();
+            System.out.println(userChoice);
+
+        }
+
+
+        String relativePath = new File("").getAbsolutePath();
+        File test = new File(relativePath + "\\src\\testing.txt");
+        Scanner testReader = new Scanner(test);
+
+        boolean Continue = true;
+        while (Continue) {
+
+            String choice = input.nextLine();
+            String parseText = input.nextLine();
+            switch (choice) {
+                case "A" -> SSNChecker(parseText);
+                case "B" -> phoneNumberChecker(parseText);
+                case "C" -> emailChecker(parseText);
+                case "D" -> nameChecker(parseText);
+                case "E" -> dateChecker(parseText);
+                case "F" -> houseAddressChecker(parseText);
+                case "G" -> cityStateChecker(parseText);
+                case "H" -> militaryTimeChecker(parseText);
+                case "I" -> currencyChecker(parseText);
+                case "J" -> urlChecker(parseText);
+                case "K" -> passwordChecker(parseText);
+                case "L" -> oddWordChecker(parseText);
+                case "Q" -> Continue = false;
+            }
+        }
+    }
+
+    public static void oddWordChecker(String parsePatternText) {
+        String word0 = "^[a-zA-Z]\\{1\\}[a-zA-Z]\\{2\\}*ion$";
+        String word1 = "^([a-zA-Z]{2})*ion$";
+
+        //String password0 = "[\\w.?!,:;-_()'\"]{10,}";
+        Pattern pattern0 = Pattern.compile(word1);
+        Matcher matcher0 = pattern0.matcher(parsePatternText);
+
+        boolean found = false;
+        while (matcher0.find()) {
+            System.out.println("fell into word0");
+            System.out.println("found the text '"
+                    + matcher0.group() + "' starting at index "
+                    + matcher0.start()
+                    + " and ending at index "
+                    + matcher0.end());
+            found = true;
+        }
+        if (!found) {
+            System.out.println("Match not found");
+        } else {
+            System.out.println("Valid word");
+        }
+    }
+
+    public static void passwordChecker(String parsePatternText) {
+        String password0 = "^(?!.*[a-z]{3})(?=.*[.?!,:;_()'\"])(?=.*[a-z])(?=.*[A-Z])(?=.*[\\d])[\\w.?!,:;_()'\"]{10,}$";
+        //String password0 = "[\\w.?!,:;-_()'\"]{10,}";
+        Pattern pattern0 = Pattern.compile(password0);
+        Matcher matcher0 = pattern0.matcher(parsePatternText);
+
+        boolean found = false;
+        while (matcher0.find()) {
+            System.out.println("fell into password0");
+            System.out.println("found the text '"
+                    + matcher0.group() + "' starting at index "
+                    + matcher0.start()
+                    + " and ending at index "
+                    + matcher0.end());
+            found = true;
+        }
+        if (!found) {
+            System.out.println("Match not found");
+        } else {
+            System.out.println("Valid password");
+        }
+    }
+
+    public static void urlChecker(String parsePatternText) {
+        String url0 = "(https://|http://|HTTPS://|HTTP://)?(www[.])?([a-zA-Z0-9]+[.])+(com|org|gov|edu|net)";
+        Pattern pattern0 = Pattern.compile(url0);
+        Matcher matcher0 = pattern0.matcher(parsePatternText);
+
+        boolean found = false;
+        while (matcher0.find()) {
+            System.out.println("fell into url0");
+            System.out.println("found the text '"
+                    + matcher0.group() + "' starting at index "
+                    + matcher0.start()
+                    + " and ending at index "
+                    + matcher0.end());
+            found = true;
+        }
+        if (!found) {
+            System.out.println("Match not found");
+        } else {
+            System.out.println("Valid URL");
+        }
+    }
+
+    public static void currencyChecker(String parsePatternText) {
+        String currency0 = "([0-9]|[0-9]{2}|[0-9]{3})([,][0-9]{3})*.[0-9]{2}";
+        Pattern pattern0 = Pattern.compile(currency0);
+        Matcher matcher0 = pattern0.matcher(parsePatternText);
+
+        boolean found = false;
+        while (matcher0.find()) {
+            System.out.println("fell into currency0");
+            System.out.println("found the text '"
+                    + matcher0.group() + "' starting at index "
+                    + matcher0.start()
+                    + " and ending at index "
+                    + matcher0.end());
+            found = true;
+        }
+        if (!found) {
+            System.out.println("Match not found");
+        } else {
+            System.out.println("Valid Currency");
+        }
+    }
+
+    public static void militaryTimeChecker(String parsePatternText) {
+        String time0 = "(([0-1][0-9][:]?[0-5][0-9])|([2][0-3][:]?[0-5][0-9])|([2][4][:]?[0][0]))[\s|:][0-5][0-9]";
+        Pattern pattern0 = Pattern.compile(time0);
+        Matcher matcher0 = pattern0.matcher(parsePatternText);
+
+        boolean found = false;
+        while (matcher0.find()) {
+            System.out.println("fell into time0");
+            System.out.println("found the text '"
+                    + matcher0.group() + "' starting at index "
+                    + matcher0.start()
+                    + " and ending at index "
+                    + matcher0.end());
+            found = true;
+        }
+        if (!found) {
+            System.out.println("Match not found");
+        } else {
+            System.out.println("Valid Time");
+        }
+    }
+
+    public static void cityStateChecker(String parsePatternText) {
+        String city0 = "[a-zA-Z\s]+[,]\s[a-zA-Z]+\s[0-9]{5}";
+        Pattern pattern0 = Pattern.compile(city0);
+        Matcher matcher0 = pattern0.matcher(parsePatternText);
+
+        boolean found = false;
+        while (matcher0.find()) {
+            System.out.println("fell into city0");
+            System.out.println("found the text '"
+                    + matcher0.group() + "' starting at index "
+                    + matcher0.start()
+                    + " and ending at index "
+                    + matcher0.end());
+            found = true;
+        }
+        if (!found) {
+            System.out.println("Match not found");
+        } else {
+            System.out.println("Valid City");
+        }
+    }
+
+    public static void houseAddressChecker(String parsePatternText) {
+        String address0 = "[0-9]+\s[a-zA-Z0-9\s]+\s(rd|st|blvd|ave|road|street|boulevard|avenue" +
+                "|Rd|St|Blvd|Ave|Road|Street|Boulevard|Avenue)";
+        Pattern pattern0 = Pattern.compile(address0);
+        Matcher matcher0 = pattern0.matcher(parsePatternText);
+
+        boolean found = false;
+        while (matcher0.find()) {
+            System.out.println("fell into address0");
+            System.out.println("found the text '"
+                    + matcher0.group() + "' starting at index "
+                    + matcher0.start()
+                    + " and ending at index "
+                    + matcher0.end());
+            found = true;
+        }
+        if (!found) {
+            System.out.println("Match not found");
+        } else {
+            System.out.println("Valid House");
+        }
     }
 
     public static void dateChecker(String parsePatternText) {
@@ -121,8 +358,8 @@ public class Regex {
         boolean found = false;
         while (matcher0.find()) {
             System.out.println("fell into january");
-            System.out.println("found the text "
-                    + matcher0.group() + " starting at index "
+            System.out.println("found the text '"
+                    + matcher0.group() + "' starting at index "
                     + matcher0.start()
                     + " and ending at index "
                     + matcher0.end());
@@ -130,8 +367,8 @@ public class Regex {
         }
         while (matcher1.find()) {
             System.out.println("fell into february");
-            System.out.println("found the text "
-                    + matcher1.group() + " starting at index "
+            System.out.println("found the text '"
+                    + matcher1.group() + "' starting at index "
                     + matcher1.start()
                     + " and ending at index "
                     + matcher1.end());
@@ -139,8 +376,8 @@ public class Regex {
         }
         while (matcher2.find()) {
             System.out.println("fell into march");
-            System.out.println("found the text "
-                    + matcher2.group() + " starting at index "
+            System.out.println("found the text '"
+                    + matcher2.group() + "' starting at index "
                     + matcher2.start()
                     + " and ending at index "
                     + matcher2.end());
@@ -148,8 +385,8 @@ public class Regex {
         }
         while (matcher3.find()) {
             System.out.println("fell into april");
-            System.out.println("found the text "
-                    + matcher3.group() + " starting at index "
+            System.out.println("found the text '"
+                    + matcher3.group() + "' starting at index "
                     + matcher3.start()
                     + " and ending at index "
                     + matcher3.end());
@@ -157,8 +394,8 @@ public class Regex {
         }
         while (matcher4.find()) {
             System.out.println("fell into may");
-            System.out.println("found the text "
-                    + matcher4.group() + " starting at index "
+            System.out.println("found the text '"
+                    + matcher4.group() + "' starting at index "
                     + matcher4.start()
                     + " and ending at index "
                     + matcher4.end());
@@ -166,8 +403,8 @@ public class Regex {
         }
         while (matcher5.find()) {
             System.out.println("fell into june");
-            System.out.println("found the text "
-                    + matcher5.group() + " starting at index "
+            System.out.println("found the text '"
+                    + matcher5.group() + "' starting at index "
                     + matcher5.start()
                     + " and ending at index "
                     + matcher5.end());
@@ -175,8 +412,8 @@ public class Regex {
         }
         while (matcher6.find()) {
             System.out.println("fell into july");
-            System.out.println("found the text "
-                    + matcher6.group() + " starting at index "
+            System.out.println("found the text '"
+                    + matcher6.group() + "' starting at index "
                     + matcher6.start()
                     + " and ending at index "
                     + matcher6.end());
@@ -184,8 +421,8 @@ public class Regex {
         }
         while (matcher7.find()) {
             System.out.println("fell into august");
-            System.out.println("found the text "
-                    + matcher7.group() + " starting at index "
+            System.out.println("found the text '"
+                    + matcher7.group() + "' starting at index "
                     + matcher7.start()
                     + " and ending at index "
                     + matcher7.end());
@@ -193,8 +430,8 @@ public class Regex {
         }
         while (matcher8.find()) {
             System.out.println("fell into september");
-            System.out.println("found the text "
-                    + matcher8.group() + " starting at index "
+            System.out.println("found the text '"
+                    + matcher8.group() + "' starting at index "
                     + matcher8.start()
                     + " and ending at index "
                     + matcher8.end());
@@ -202,8 +439,8 @@ public class Regex {
         }
         while (matcher9.find()) {
             System.out.println("fell into october");
-            System.out.println("found the text "
-                    + matcher9.group() + " starting at index "
+            System.out.println("found the text '"
+                    + matcher9.group() + "' starting at index "
                     + matcher9.start()
                     + " and ending at index "
                     + matcher9.end());
@@ -211,8 +448,8 @@ public class Regex {
         }
         while (matcher10.find()) {
             System.out.println("fell into november");
-            System.out.println("found the text "
-                    + matcher10.group() + " starting at index "
+            System.out.println("found the text '"
+                    + matcher10.group() + "' starting at index "
                     + matcher10.start()
                     + " and ending at index "
                     + matcher10.end());
@@ -220,8 +457,8 @@ public class Regex {
         }
         while (matcher11.find()) {
             System.out.println("fell into december");
-            System.out.println("found the text "
-                    + matcher11.group() + " starting at index "
+            System.out.println("found the text '"
+                    + matcher11.group() + "' starting at index "
                     + matcher11.start()
                     + " and ending at index "
                     + matcher11.end());
@@ -246,8 +483,8 @@ public class Regex {
         boolean found = false;
         while (matcher0.find()) {
             System.out.println("fell into Regex0");
-            System.out.println("found the text "
-                    + matcher0.group() + " starting at index "
+            System.out.println("found the text '"
+                    + matcher0.group() + "' starting at index "
                     + matcher0.start()
                     + " and ending at index "
                     + matcher0.end());
@@ -255,8 +492,8 @@ public class Regex {
         }
         while (matcher1.find()) {
             System.out.println("fell into Regex1");
-            System.out.println("found the text "
-                    + matcher1.group() + " starting at index "
+            System.out.println("found the text '"
+                    + matcher1.group() + "' starting at index "
                     + matcher1.start()
                     + " and ending at index "
                     + matcher1.end());
@@ -301,8 +538,8 @@ public class Regex {
         boolean found = false;
         while (matcher0.find()) {
             System.out.println("fell into Regex0");
-            System.out.println("found the text "
-                    + matcher0.group() + " starting at index "
+            System.out.println("found the text '"
+                    + matcher0.group() + "' starting at index "
                     + matcher0.start()
                     + " and ending at index "
                     + matcher0.end());
@@ -310,8 +547,8 @@ public class Regex {
         }
         while (matcher1.find()) {
             System.out.println("fell into Regex1");
-            System.out.println("found the text "
-                    + matcher1.group() + " starting at index "
+            System.out.println("found the text '"
+                    + matcher1.group() + "' starting at index "
                     + matcher1.start()
                     + " and ending at index "
                     + matcher1.end());
@@ -319,8 +556,8 @@ public class Regex {
         }
         while (matcher2.find()) {
             System.out.println("fell into Regex2");
-            System.out.println("found the text "
-                    + matcher2.group() + " starting at index "
+            System.out.println("found the text '"
+                    + matcher2.group() + "' starting at index "
                     + matcher2.start()
                     + " and ending at index "
                     + matcher2.end());
@@ -328,8 +565,8 @@ public class Regex {
         }
         while (matcher3.find()) {
             System.out.println("fell into Regex3");
-            System.out.println("found the text "
-                    + matcher3.group() + " starting at index "
+            System.out.println("found the text '"
+                    + matcher3.group() + "' starting at index "
                     + matcher3.start()
                     + " and ending at index "
                     + matcher3.end());
@@ -337,8 +574,8 @@ public class Regex {
         }
         while (matcher4.find()) {
             System.out.println("fell into Regex4");
-            System.out.println("found the text "
-                    + matcher4.group() + " starting at index "
+            System.out.println("found the text '"
+                    + matcher4.group() + "' starting at index "
                     + matcher4.start()
                     + " and ending at index "
                     + matcher4.end());
@@ -346,8 +583,8 @@ public class Regex {
         }
         while (matcher5.find()) {
             System.out.println("fell into Regex5");
-            System.out.println("found the text "
-                    + matcher5.group() + " starting at index "
+            System.out.println("found the text '"
+                    + matcher5.group() + "' starting at index "
                     + matcher5.start()
                     + " and ending at index "
                     + matcher5.end());
@@ -375,30 +612,30 @@ public class Regex {
 
         boolean found = false;
         while (matcher0.find()) {
-//            System.out.println("fell into SSNRegex0");
-//            System.out.println("found the text "
-//                    + matcher0.group() + " starting at index "
-//                    + matcher0.start()
-//                    + " and ending at index "
-//                    + matcher0.end());
+            System.out.println("fell into SSNRegex0");
+            System.out.println("found the text '"
+                    + matcher0.group() + "' starting at index "
+                    + matcher0.start()
+                    + " and ending at index "
+                    + matcher0.end());
             found = true;
         }
         while (matcher1.find()) {
-//            System.out.println("fell into SSNRegex1");
-//            System.out.println("found the text "
-//                    + matcher1.group() + " starting at index "
-//                    + matcher1.start()
-//                    + " and ending at index "
-//                    + matcher1.end());
+            System.out.println("fell into SSNRegex1");
+            System.out.println("found the text '"
+                    + matcher1.group() + "' starting at index "
+                    + matcher1.start()
+                    + " and ending at index "
+                    + matcher1.end());
             found = true;
         }
         while (matcher2.find()) {
-//            System.out.println("fell into SSNRegex2");
-//            System.out.println("found the text "
-//                    + matcher2.group() + " starting at index "
-//                    + matcher2.start()
-//                    + " and ending at index "
-//                    + matcher2.end());
+            System.out.println("fell into SSNRegex2");
+            System.out.println("found the text '"
+                    + matcher2.group() + "' starting at index "
+                    + matcher2.start()
+                    + " and ending at index "
+                    + matcher2.end());
             found = true;
         }
         if (!found) {
